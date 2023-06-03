@@ -19,7 +19,7 @@ export const addTodo = createAsyncThunk(
   'todo/addTodo',
   async (todo, thunkApi) => {
     try {
-      const { data } = await axios.get('/todos', todo);
+      const { data } = await axios.post('/todos', todo);
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
@@ -31,7 +31,7 @@ export const deleteTodo = createAsyncThunk(
   'todo/deleteTodo',
   async (id, thunkApi) => {
     try {
-      const { data } = await axios.get(`/todos/${id}`);
+      const { data } = await axios.delete(`/todos/${id}`);
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
